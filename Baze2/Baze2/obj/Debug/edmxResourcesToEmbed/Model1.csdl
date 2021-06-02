@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aerodromi" EntityType="Model1.Aerodrom" />
+    <EntitySet Name="Avioni" EntityType="Model1.Avion" />
+    <EntitySet Name="Centrale" EntityType="Model1.Centrala" />
+    <AssociationSet Name="AerodromAvion" Association="Model1.AerodromAvion">
+      <End Role="Aerodrom" EntitySet="Aerodromi" />
+      <End Role="Avion" EntitySet="Avioni" />
+    </AssociationSet>
+    <AssociationSet Name="AvionCentrala" Association="Model1.AvionCentrala">
+      <End Role="Avion" EntitySet="Avioni" />
+      <End Role="Centrala" EntitySet="Centrale" />
+    </AssociationSet>
+    <EntitySet Name="Klijenti" EntityType="Model1.Klijent" />
+    <AssociationSet Name="AerodromKlijent" Association="Model1.AerodromKlijent">
+      <End Role="Aerodrom" EntitySet="Aerodromi" />
+      <End Role="Klijent" EntitySet="Klijenti" />
+    </AssociationSet>
+    <EntitySet Name="Osobljes" EntityType="Model1.Osoblje" />
+    <AssociationSet Name="AerodromOsoblje" Association="Model1.AerodromOsoblje">
+      <End Role="Aerodrom" EntitySet="Aerodromi" />
+      <End Role="Osoblje" EntitySet="Osobljes" />
+    </AssociationSet>
+    <AssociationSet Name="Op_LetovaCentrala" Association="Model1.Op_LetovaCentrala">
+      <End Role="Op_Letova" EntitySet="Osobljes" />
+      <End Role="Centrala" EntitySet="Centrale" />
+    </AssociationSet>
+    <EntitySet Name="Upravljas" EntityType="Model1.Upravlja" />
+    <AssociationSet Name="PilotUpravlja" Association="Model1.PilotUpravlja">
+      <End Role="Pilot" EntitySet="Osobljes" />
+      <End Role="Upravlja" EntitySet="Upravljas" />
+    </AssociationSet>
+    <AssociationSet Name="AvionUpravlja" Association="Model1.AvionUpravlja">
+      <End Role="Avion" EntitySet="Avioni" />
+      <End Role="Upravlja" EntitySet="Upravljas" />
+    </AssociationSet>
+    <EntitySet Name="Letovi" EntityType="Model1.Let" />
+    <AssociationSet Name="LetCentrala" Association="Model1.LetCentrala">
+      <End Role="Let" EntitySet="Letovi" />
+      <End Role="Centrala" EntitySet="Centrale" />
+    </AssociationSet>
+    <EntitySet Name="Izvrsavas" EntityType="Model1.Izvrsava" />
+    <AssociationSet Name="AvionIzvrsava" Association="Model1.AvionIzvrsava">
+      <End Role="Avion" EntitySet="Avioni" />
+      <End Role="Izvrsava" EntitySet="Izvrsavas" />
+    </AssociationSet>
+    <AssociationSet Name="LetIzvrsava" Association="Model1.LetIzvrsava">
+      <End Role="Let" EntitySet="Letovi" />
+      <End Role="Izvrsava" EntitySet="Izvrsavas" />
+    </AssociationSet>
+    <EntitySet Name="Kompanije" EntityType="Model1.Kompanija" />
+    <EntitySet Name="Posedujes" EntityType="Model1.Poseduje" />
+    <AssociationSet Name="KompanijaPoseduje" Association="Model1.KompanijaPoseduje">
+      <End Role="Kompanija" EntitySet="Kompanije" />
+      <End Role="Poseduje" EntitySet="Posedujes" />
+    </AssociationSet>
+    <AssociationSet Name="AvionPoseduje" Association="Model1.AvionPoseduje">
+      <End Role="Avion" EntitySet="Avioni" />
+      <End Role="Poseduje" EntitySet="Posedujes" />
+    </AssociationSet>
+    <AssociationSet Name="KlijentPoseduje" Association="Model1.KlijentPoseduje">
+      <End Role="Klijent" EntitySet="Klijenti" />
+      <End Role="Poseduje" EntitySet="Posedujes" />
+    </AssociationSet>
+    <AssociationSet Name="KlijentLet" Association="Model1.KlijentLet">
+      <End Role="Klijent" EntitySet="Klijenti" />
+      <End Role="Let" EntitySet="Letovi" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Aerodrom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" Nullable="false" />
+    <Property Name="Adresa" Type="String" Nullable="false" />
+    <NavigationProperty Name="Avions" Relationship="Model1.AerodromAvion" FromRole="Aerodrom" ToRole="Avion" />
+    <NavigationProperty Name="Klijents" Relationship="Model1.AerodromKlijent" FromRole="Aerodrom" ToRole="Klijent" />
+    <NavigationProperty Name="Osobljes" Relationship="Model1.AerodromOsoblje" FromRole="Aerodrom" ToRole="Osoblje" />
+  </EntityType>
+  <EntityType Name="Avion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrojMesta" Type="String" Nullable="false" />
+    <NavigationProperty Name="Aerodrom" Relationship="Model1.AerodromAvion" FromRole="Avion" ToRole="Aerodrom" />
+    <Property Name="AerodromId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Centrala" Relationship="Model1.AvionCentrala" FromRole="Avion" ToRole="Centrala" />
+    <Property Name="CentralaId" Type="Int32" Nullable="false" />
+    <Property Name="Naziv" Type="String" Nullable="false" />
+    <NavigationProperty Name="Upravljas" Relationship="Model1.AvionUpravlja" FromRole="Avion" ToRole="Upravlja" />
+    <NavigationProperty Name="Izvrsavas" Relationship="Model1.AvionIzvrsava" FromRole="Avion" ToRole="Izvrsava" />
+    <NavigationProperty Name="Posedujes" Relationship="Model1.AvionPoseduje" FromRole="Avion" ToRole="Poseduje" />
+  </EntityType>
+  <EntityType Name="Centrala">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" Nullable="false" />
+    <NavigationProperty Name="Avions" Relationship="Model1.AvionCentrala" FromRole="Centrala" ToRole="Avion" />
+    <NavigationProperty Name="Op_Letova" Relationship="Model1.Op_LetovaCentrala" FromRole="Centrala" ToRole="Op_Letova" />
+    <NavigationProperty Name="Lets" Relationship="Model1.LetCentrala" FromRole="Centrala" ToRole="Let" />
+  </EntityType>
+  <Association Name="AerodromAvion">
+    <End Type="Model1.Aerodrom" Role="Aerodrom" Multiplicity="1" />
+    <End Type="Model1.Avion" Role="Avion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aerodrom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Avion">
+        <PropertyRef Name="AerodromId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AvionCentrala">
+    <End Type="Model1.Avion" Role="Avion" Multiplicity="*" />
+    <End Type="Model1.Centrala" Role="Centrala" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Centrala">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Avion">
+        <PropertyRef Name="CentralaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Klijent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ime" Type="String" Nullable="false" />
+    <Property Name="Prezime" Type="String" Nullable="false" />
+    <NavigationProperty Name="Aerodrom" Relationship="Model1.AerodromKlijent" FromRole="Klijent" ToRole="Aerodrom" />
+    <Property Name="AerodromId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Poseduje" Relationship="Model1.KlijentPoseduje" FromRole="Klijent" ToRole="Poseduje" />
+    <Property Name="PosedujeKompanijaId" Type="Int32" Nullable="false" />
+    <Property Name="PosedujeAvionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Let" Relationship="Model1.KlijentLet" FromRole="Klijent" ToRole="Let" />
+    <Property Name="LetId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="AerodromKlijent">
+    <End Type="Model1.Aerodrom" Role="Aerodrom" Multiplicity="1" />
+    <End Type="Model1.Klijent" Role="Klijent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aerodrom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Klijent">
+        <PropertyRef Name="AerodromId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Osoblje">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ime" Type="String" Nullable="false" />
+    <Property Name="Prezime" Type="String" Nullable="false" />
+    <NavigationProperty Name="Aerodrom" Relationship="Model1.AerodromOsoblje" FromRole="Osoblje" ToRole="Aerodrom" />
+    <Property Name="AerodromId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="AerodromOsoblje">
+    <End Type="Model1.Aerodrom" Role="Aerodrom" Multiplicity="1" />
+    <End Type="Model1.Osoblje" Role="Osoblje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aerodrom">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Osoblje">
+        <PropertyRef Name="AerodromId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Pilot" BaseType="Model1.Osoblje">
+    <NavigationProperty Name="Upravljas" Relationship="Model1.PilotUpravlja" FromRole="Pilot" ToRole="Upravlja" />
+  </EntityType>
+  <EntityType Name="Op_Letova" BaseType="Model1.Osoblje">
+    <NavigationProperty Name="Centrala" Relationship="Model1.Op_LetovaCentrala" FromRole="Op_Letova" ToRole="Centrala" />
+    <Property Name="CentralaId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="Op_LetovaCentrala">
+    <End Type="Model1.Op_Letova" Role="Op_Letova" Multiplicity="*" />
+    <End Type="Model1.Centrala" Role="Centrala" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Centrala">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Op_Letova">
+        <PropertyRef Name="CentralaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Upravlja">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Pilot" Relationship="Model1.PilotUpravlja" FromRole="Upravlja" ToRole="Pilot" />
+    <Property Name="PilotId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Avion" Relationship="Model1.AvionUpravlja" FromRole="Upravlja" ToRole="Avion" />
+    <Property Name="AvionId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="PilotUpravlja">
+    <End Type="Model1.Pilot" Role="Pilot" Multiplicity="1" />
+    <End Type="Model1.Upravlja" Role="Upravlja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pilot">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Upravlja">
+        <PropertyRef Name="PilotId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AvionUpravlja">
+    <End Type="Model1.Avion" Role="Avion" Multiplicity="1" />
+    <End Type="Model1.Upravlja" Role="Upravlja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Upravlja">
+        <PropertyRef Name="AvionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Let">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Datum" Type="String" Nullable="false" />
+    <Property Name="Vreme" Type="String" Nullable="false" />
+    <Property Name="Destinacija" Type="String" Nullable="false" />
+    <Property Name="MestoPolaska" Type="String" Nullable="false" />
+    <NavigationProperty Name="Centrala" Relationship="Model1.LetCentrala" FromRole="Let" ToRole="Centrala" />
+    <Property Name="CentralaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Izvrsavas" Relationship="Model1.LetIzvrsava" FromRole="Let" ToRole="Izvrsava" />
+    <NavigationProperty Name="Klijents" Relationship="Model1.KlijentLet" FromRole="Let" ToRole="Klijent" />
+  </EntityType>
+  <Association Name="LetCentrala">
+    <End Type="Model1.Let" Role="Let" Multiplicity="*" />
+    <End Type="Model1.Centrala" Role="Centrala" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Centrala">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Let">
+        <PropertyRef Name="CentralaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Izvrsava">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Avion" Relationship="Model1.AvionIzvrsava" FromRole="Izvrsava" ToRole="Avion" />
+    <Property Name="AvionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Let" Relationship="Model1.LetIzvrsava" FromRole="Izvrsava" ToRole="Let" />
+    <Property Name="LetId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="AvionIzvrsava">
+    <End Type="Model1.Avion" Role="Avion" Multiplicity="1" />
+    <End Type="Model1.Izvrsava" Role="Izvrsava" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Izvrsava">
+        <PropertyRef Name="AvionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LetIzvrsava">
+    <End Type="Model1.Let" Role="Let" Multiplicity="1" />
+    <End Type="Model1.Izvrsava" Role="Izvrsava" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Let">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Izvrsava">
+        <PropertyRef Name="LetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Kompanija">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" Nullable="false" />
+    <NavigationProperty Name="Posedujes" Relationship="Model1.KompanijaPoseduje" FromRole="Kompanija" ToRole="Poseduje" />
+  </EntityType>
+  <EntityType Name="Poseduje">
+    <Key>
+      <PropertyRef Name="KompanijaId" />
+      <PropertyRef Name="AvionId" />
+    </Key>
+    <NavigationProperty Name="Kompanija" Relationship="Model1.KompanijaPoseduje" FromRole="Poseduje" ToRole="Kompanija" />
+    <Property Name="KompanijaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Avion" Relationship="Model1.AvionPoseduje" FromRole="Poseduje" ToRole="Avion" />
+    <Property Name="AvionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Klijents" Relationship="Model1.KlijentPoseduje" FromRole="Poseduje" ToRole="Klijent" />
+  </EntityType>
+  <Association Name="KompanijaPoseduje">
+    <End Type="Model1.Kompanija" Role="Kompanija" Multiplicity="1" />
+    <End Type="Model1.Poseduje" Role="Poseduje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kompanija">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Poseduje">
+        <PropertyRef Name="KompanijaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AvionPoseduje">
+    <End Type="Model1.Avion" Role="Avion" Multiplicity="1" />
+    <End Type="Model1.Poseduje" Role="Poseduje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Poseduje">
+        <PropertyRef Name="AvionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KlijentPoseduje">
+    <End Type="Model1.Klijent" Role="Klijent" Multiplicity="*" />
+    <End Type="Model1.Poseduje" Role="Poseduje" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Poseduje">
+        <PropertyRef Name="KompanijaId" />
+        <PropertyRef Name="AvionId" />
+      </Principal>
+      <Dependent Role="Klijent">
+        <PropertyRef Name="PosedujeKompanijaId" />
+        <PropertyRef Name="PosedujeAvionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KlijentLet">
+    <End Type="Model1.Klijent" Role="Klijent" Multiplicity="*" />
+    <End Type="Model1.Let" Role="Let" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Let">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Klijent">
+        <PropertyRef Name="LetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

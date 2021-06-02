@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c4bfd8f3030489fa1fa88cf7088905f" Name="Diagram1" ZoomLevel="60" >
+        <EntityTypeShape EntityType="Model1.Aerodrom" Width="1.5" PointX="9.5" PointY="6.875" />
+        <EntityTypeShape EntityType="Model1.Avion" Width="1.5" PointX="6.125" PointY="6.875" />
+        <EntityTypeShape EntityType="Model1.Centrala" Width="1.5" PointX="2.875" PointY="6.875" />
+        <AssociationConnector Association="Model1.AerodromAvion" />
+        <AssociationConnector Association="Model1.AvionCentrala" />
+        <EntityTypeShape EntityType="Model1.Klijent" Width="1.5" PointX="13.375" PointY="7.875" />
+        <AssociationConnector Association="Model1.AerodromKlijent" />
+        <EntityTypeShape EntityType="Model1.Osoblje" Width="1.5" PointX="10.375" PointY="2.75" />
+        <AssociationConnector Association="Model1.AerodromOsoblje" />
+        <EntityTypeShape EntityType="Model1.Pilot" Width="1.5" PointX="6.75" PointY="1.625" />
+        <InheritanceConnector EntityType="Model1.Pilot" />
+        <EntityTypeShape EntityType="Model1.Op_Letova" Width="1.5" PointX="3" PointY="3.125" />
+        <InheritanceConnector EntityType="Model1.Op_Letova" />
+        <AssociationConnector Association="Model1.Op_LetovaCentrala" />
+        <EntityTypeShape EntityType="Model1.Upravlja" Width="1.5" PointX="6.875" PointY="4" />
+        <AssociationConnector Association="Model1.PilotUpravlja" />
+        <AssociationConnector Association="Model1.AvionUpravlja" />
+        <EntityTypeShape EntityType="Model1.Let" Width="1.5" PointX="5.875" PointY="14.25" />
+        <AssociationConnector Association="Model1.LetCentrala" />
+        <EntityTypeShape EntityType="Model1.Izvrsava" Width="1.5" PointX="6.125" PointY="11" />
+        <AssociationConnector Association="Model1.AvionIzvrsava" />
+        <AssociationConnector Association="Model1.LetIzvrsava" />
+        <EntityTypeShape EntityType="Model1.Kompanija" Width="1.5" PointX="9.25" PointY="14.625" />
+        <EntityTypeShape EntityType="Model1.Poseduje" Width="1.5" PointX="9.375" PointY="11.625" />
+        <AssociationConnector Association="Model1.KompanijaPoseduje" />
+        <AssociationConnector Association="Model1.AvionPoseduje" />
+        <AssociationConnector Association="Model1.KlijentPoseduje" />
+        <AssociationConnector Association="Model1.KlijentLet" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

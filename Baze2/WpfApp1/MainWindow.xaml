@@ -1,0 +1,157 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1000"
+        ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Entities" FontSize="15" Margin="10,0,885.6,378"/>
+        <ComboBox Name="Combo" HorizontalAlignment="Left" Margin="89,10,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem Content="Aerodrom"></ComboBoxItem>
+            <ComboBoxItem Content="Avion"></ComboBoxItem>
+            <ComboBoxItem Content="Centrala"></ComboBoxItem>
+            <ComboBoxItem Content="Kompanija"></ComboBoxItem>
+            <ComboBoxItem Content="Let"></ComboBoxItem>
+            <ComboBoxItem Content="Osoblje"></ComboBoxItem>
+        </ComboBox>
+        <TextBox Name="TextBP" Margin="541,67,-0.4,38" />
+
+        <GroupBox Name="groupBoxAerodrom" Visibility="Hidden">
+            <Canvas Margin="10,74,459.8,-0.4">
+                <Button Name="addAerodrom" Content="Add Aerodrom" Height="35" Canvas.Left="0" Canvas.Top="15" Width="121" Click="AddAerodrom_Click" />
+                <Button Name="editAerodrom" Content="Edit Aerodrom" Height="35" Canvas.Left="0" Canvas.Top="60" Width="121" Click="EditAerodrom_Click"/>
+                <Button Name="deleteAerodrom"  Content="Delete Aerodrom" Height="35" Canvas.Left="0" Canvas.Top="200" Width="121" Click="DeleteAerodrom_Click"/>
+                <Button Name="getAerodrom" Content="Get Aerodrom" Height="35" Canvas.Left="0" Canvas.Top="250" Width="121" Click="GetAerodrom_Click"/>
+
+                <Label Canvas.Left="200" Canvas.Top="33" Height="30" Width="60" Content="Naziv"/>
+                <TextBox Name="nazivAerodrom" Canvas.Left="200" Canvas.Top="60" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="33" Height="30" Width="60" Content="Adresa"/>
+                <TextBox Name="adresaAerodrom" Canvas.Left="300" Canvas.Top="60" Height="30" Width="60"/>
+                <Label Canvas.Left="400" Canvas.Top="33" Height="30" Width="80" Content="Id (for Edit)"/>
+                <TextBox Name="idAerodrom1" Canvas.Left="400" Canvas.Top="60" Height="30" Width="60"/>
+
+                <Label Canvas.Left="300" Canvas.Top="200" Height="30" Width="60" Content="Id"/>
+                <TextBox Name="idAerodrom2" Canvas.Left="272" Canvas.Top="230" Height="36" Width="88" />
+            </Canvas>
+        </GroupBox>
+
+        <GroupBox Name="groupBoxAvion" Visibility="Hidden">
+            <Canvas Margin="10,74,459.8,-0.4">
+                <Button Name="addAvion" Content="Add Avion" Height="35" Canvas.Left="0" Canvas.Top="15" Width="121" Click="AddAvion_Click"/>
+                <Button Name="editAvion" Content="Edit Avion" Height="35" Canvas.Left="0" Canvas.Top="60" Width="121" Click="EditAvion_Click"/>
+                <Button Name="deleteAvion"  Content="Delete Avion" Height="35" Canvas.Left="0" Canvas.Top="200" Width="121" Click="DeleteAvion_Click"/>
+                <Button Name="getAvion" Content="Get Avion" Height="35" Canvas.Left="0" Canvas.Top="250" Width="121" Click="GetAvion_Click"/>
+
+                <Label Canvas.Left="200" Canvas.Top="0" Height="30" Width="60" Content="Naziv"/>
+                <TextBox Name="nazivAvion" Canvas.Left="200" Canvas.Top="20" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="0" Height="30" Width="60" Content="Br. Mesta"/>
+                <TextBox Name="mestaAvion" Canvas.Left="300" Canvas.Top="20" Height="30" Width="60"/>
+                <Label Canvas.Left="200" Canvas.Top="60" Height="30" Width="70" Content="CentralaId"/>
+                <TextBox Name="centralaIDAvion" Canvas.Left="200" Canvas.Top="85" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="60" Height="30" Width="80" Content="AerodromId"/>
+                <TextBox Name="aerodromIdAvion" Canvas.Left="300" Canvas.Top="85" Height="30" Width="60"/>
+                
+                <Label Canvas.Left="400" Canvas.Top="33" Height="30" Width="80" Content="Id (for Edit)"/>
+                <TextBox Name="idAvion1" Canvas.Left="400" Canvas.Top="60" Height="30" Width="60"/>
+
+                <Label Canvas.Left="300" Canvas.Top="200" Height="30" Width="60" Content="Id"/>
+                <TextBox Name="idAvion2" Canvas.Left="272" Canvas.Top="230" Height="36" Width="88" />
+            </Canvas>
+        </GroupBox>
+
+        <GroupBox Name="groupBoxCentrala" Visibility="Hidden">
+            <Canvas Margin="10,74,459.8,-0.4">
+                <Button Name="addCentrala" Content="Add Centrala" Height="35" Canvas.Left="0" Canvas.Top="15" Width="121" Click="AddCentrala_Click"/>
+                <Button Name="editCentrala" Content="Edit Centrala" Height="35" Canvas.Left="0" Canvas.Top="60" Width="121" Click="EditCentrala_Click"/>
+                <Button Name="deleteCentrala"  Content="Delete Centrala" Height="35" Canvas.Left="0" Canvas.Top="200" Width="121" Click="DeleteCentrala_Click"/>
+                <Button Name="getCentrala" Content="Get Centrala" Height="35" Canvas.Left="0" Canvas.Top="250" Width="121" Click="GetCentrala_Click"/>
+
+                <Label Canvas.Left="200" Canvas.Top="33" Height="30" Width="60" Content="Naziv"/>
+                <TextBox Name="nazivCentrala" Canvas.Left="200" Canvas.Top="60" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="33" Height="30" Width="80" Content="Id (for Edit)"/>
+                <TextBox Name="idCentrala1" Canvas.Left="300" Canvas.Top="60" Height="30" Width="60"/>
+
+                <Label Canvas.Left="300" Canvas.Top="200" Height="30" Width="60" Content="Id"/>
+                <TextBox Name="idCentrala2" Canvas.Left="272" Canvas.Top="230" Height="36" Width="88" />
+            </Canvas>
+        </GroupBox>
+
+        <GroupBox Name="groupBoxKompanija" Visibility="Hidden">
+            <Canvas Margin="10,74,459.8,-0.4">
+                <Button Name="addKompanija" Content="Add Kompanija" Height="35" Canvas.Left="0" Canvas.Top="15" Width="121" Click="AddKompanija_Click" />
+                <Button Name="editKompanija" Content="Edit Kompanija" Height="35" Canvas.Left="0" Canvas.Top="60" Width="121" Click="EditKompanija_Click" />
+                <Button Name="deleteKompanja"  Content="Delete Kompanija" Height="35" Canvas.Left="0" Canvas.Top="200" Width="121" Click="DeleteKompanja_Click" />
+                <Button Name="getKompanija" Content="Get Kompanija" Height="35" Canvas.Left="0" Canvas.Top="250" Width="121" Click="GetKompanija_Click"/>
+
+                <Label Canvas.Left="200" Canvas.Top="33" Height="30" Width="60" Content="Naziv"/>
+                <TextBox Name="nazivKompanija" Canvas.Left="200" Canvas.Top="60" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="33" Height="30" Width="80" Content="Id (for Edit)"/>
+                <TextBox Name="idKompanija1" Canvas.Left="300" Canvas.Top="60" Height="30" Width="60"/>
+
+                <Label Canvas.Left="300" Canvas.Top="200" Height="30" Width="60" Content="Id"/>
+                <TextBox Name="idKompanija2" Canvas.Left="272" Canvas.Top="230" Height="36" Width="88" />
+            </Canvas>
+        </GroupBox>
+
+        <GroupBox Name="groupBoxLet" Visibility="Hidden">
+            <Canvas Margin="10,74,459.8,-0.4">
+                <Button Name="addLet" Content="Add Let" Height="35" Canvas.Left="0" Canvas.Top="15" Width="121" Click="AddLet_Click"  />
+                <Button Name="editLet" Content="Edit Let" Height="35" Canvas.Left="0" Canvas.Top="60" Width="121" Click="EditLet_Click"  />
+                <Button Name="deleteLet"  Content="Delete Let" Height="35" Canvas.Left="0" Canvas.Top="200" Width="121" Click="DeleteLet_Click"  />
+                <Button Name="getLet" Content="Get Let" Height="35" Canvas.Left="0" Canvas.Top="250" Width="121" Click="GetLet_Click" />
+
+                <Label Canvas.Left="200" Canvas.Top="0" Height="30" Width="60" Content="Datum"/>
+                <TextBox Name="DatumLet" Canvas.Left="200" Canvas.Top="20" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="0" Height="30" Width="60" Content="Vreme"/>
+                <TextBox Name="VremeLet" Canvas.Left="300" Canvas.Top="20" Height="30" Width="60"/>
+                <Label Canvas.Left="200" Canvas.Top="60" Height="30" Width="85" Content="MestoPolaska"/>
+                <TextBox Name="MestoPolaska" Canvas.Left="200" Canvas.Top="85" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="60" Height="30" Width="80" Content="Destinacija"/>
+                <TextBox Name="Destinacija" Canvas.Left="300" Canvas.Top="85" Height="30" Width="60"/>
+                
+                <Label Canvas.Left="400" Canvas.Top="0" Height="30" Width="80" Content="Id (for Edit)"/>
+                <TextBox Name="idLet1" Canvas.Left="400" Canvas.Top="20" Height="30" Width="60"/>
+                <Label Canvas.Left="400" Canvas.Top="60" Height="30" Width="80" Content="CentralaId"/>
+                <TextBox Name="CentralaIdLet" Canvas.Left="400" Canvas.Top="85" Height="30" Width="60"/>
+
+                <Label Canvas.Left="300" Canvas.Top="200" Height="30" Width="60" Content="Id"/>
+                <TextBox Name="idLet2" Canvas.Left="272" Canvas.Top="230" Height="36" Width="88" />
+            </Canvas>
+        </GroupBox>
+
+
+        <GroupBox Name="groupBoxOsoblje" Visibility="Hidden">
+            <Canvas Margin="10,74,459.8,-0.4">
+                <Button Name="addOsoblje" Content="Add Osoblje" Height="35" Canvas.Left="0" Canvas.Top="15" Width="121" Click="AddOsoblje_Click" />
+                <Button Name="editOsoblje" Content="Edit Osoblje" Height="35" Canvas.Left="0" Canvas.Top="60" Width="121"  Click="EditOsoblje_Click"/>
+                <Button Name="deleteOsoblje"  Content="Delete Osoblje" Height="35" Canvas.Left="0" Canvas.Top="200" Width="121"  Click="DeleteOsoblje_Click"/>
+                <Button Name="getOsoblje" Content="Get Osoblje" Height="35" Canvas.Left="0" Canvas.Top="250" Width="121"  Click="GetOsoblje_Click"/>
+
+                <Label Canvas.Left="200" Canvas.Top="33" Height="30" Width="60" Content="Ime"/>
+                <TextBox Name="imeOsoblje" Canvas.Left="200" Canvas.Top="60" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="33" Height="30" Width="60" Content="Prezime"/>
+                <TextBox Name="prezimeOsoblje" Canvas.Left="300" Canvas.Top="60" Height="30" Width="60"/>
+                <Label Canvas.Left="300" Canvas.Top="100" Height="30" Width="100" Content="AerodromID"/>
+                <TextBox Name="aerodromIdOsoblje" Canvas.Left="300" Canvas.Top="130" Height="30" Width="60"/>
+                <Label Canvas.Left="400" Canvas.Top="100" Height="30" Width="100" Content="CentralaID"/>
+                <TextBox Name="centralaOsoblje" Canvas.Left="400" Canvas.Top="130" Height="30" Width="60"/>
+                <Label Canvas.Left="400" Canvas.Top="33" Height="30" Width="80" Content="Id (for Edit)"/>
+                <TextBox Name="idOsoblje1" Canvas.Left="400" Canvas.Top="60" Height="30" Width="60"/>
+
+                <ComboBox Name="comboOsoblje" HorizontalAlignment="Left" Canvas.Top="0"  Canvas.Left="280"  Width="120" >
+                    <ComboBoxItem Content="OperatorLetova"></ComboBoxItem>
+                    <ComboBoxItem Content="Pilot"></ComboBoxItem>
+                </ComboBox>
+
+                <Label Canvas.Left="300" Canvas.Top="200" Height="30" Width="60" Content="Id"/>
+                <TextBox Name="idOsoblje2" Canvas.Left="272" Canvas.Top="230" Height="36" Width="88" />
+            </Canvas>
+        </GroupBox>
+
+        
+
+    </Grid>
+</Window>

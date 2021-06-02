@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Aerodromi">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Aerodrom)">
+        <MappingFragment StoreEntitySet="Aerodromi">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Avioni">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Avion)">
+        <MappingFragment StoreEntitySet="Avioni">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrojMesta" ColumnName="BrojMesta" />
+          <ScalarProperty Name="AerodromId" ColumnName="AerodromId" />
+          <ScalarProperty Name="CentralaId" ColumnName="CentralaId" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Centrale">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Centrala)">
+        <MappingFragment StoreEntitySet="Centrale">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klijenti">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Klijent)">
+        <MappingFragment StoreEntitySet="Klijenti">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="AerodromId" ColumnName="AerodromId" />
+          <ScalarProperty Name="PosedujeKompanijaId" ColumnName="PosedujeKompanijaId" />
+          <ScalarProperty Name="PosedujeAvionId" ColumnName="PosedujeAvionId" />
+          <ScalarProperty Name="LetId" ColumnName="LetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Osobljes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Osoblje)">
+        <MappingFragment StoreEntitySet="Osobljes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="AerodromId" ColumnName="AerodromId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Op_Letova)">
+        <MappingFragment StoreEntitySet="Osobljes_Op_Letova">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CentralaId" ColumnName="CentralaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Pilot)">
+        <MappingFragment StoreEntitySet="Osobljes_Pilot">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Upravljas">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Upravlja)">
+        <MappingFragment StoreEntitySet="Upravljas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PilotId" ColumnName="PilotId" />
+          <ScalarProperty Name="AvionId" ColumnName="AvionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Letovi">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Let)">
+        <MappingFragment StoreEntitySet="Letovi">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Datum" ColumnName="Datum" />
+          <ScalarProperty Name="Vreme" ColumnName="Vreme" />
+          <ScalarProperty Name="Destinacija" ColumnName="Destinacija" />
+          <ScalarProperty Name="MestoPolaska" ColumnName="MestoPolaska" />
+          <ScalarProperty Name="CentralaId" ColumnName="CentralaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Izvrsavas">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Izvrsava)">
+        <MappingFragment StoreEntitySet="Izvrsavas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AvionId" ColumnName="AvionId" />
+          <ScalarProperty Name="LetId" ColumnName="LetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kompanije">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Kompanija)">
+        <MappingFragment StoreEntitySet="Kompanije">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posedujes">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Poseduje)">
+        <MappingFragment StoreEntitySet="Posedujes">
+          <ScalarProperty Name="KompanijaId" ColumnName="KompanijaId" />
+          <ScalarProperty Name="AvionId" ColumnName="AvionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
